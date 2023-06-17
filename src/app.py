@@ -1,7 +1,15 @@
-from flask import Flask
-app = Flask("FinTechExplained WebServer")
+import os
 
-@app.route("/")
-def get_data():
-    return [1,2,3]
-    
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return 'Hello World!123'
+
+if __name__ == '__main__':
+    # Bind to PORT if defined, otherwise default to 5000.
+    port = int(os.environ.get('PORT', 5001))
+    app.run(host='127.0.0.1', port=port)
+
